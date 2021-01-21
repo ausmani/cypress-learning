@@ -1,14 +1,18 @@
 // @flow 
 import * as React from 'react';
+import {Link , useHistory} from "react-router-dom";
 
 const SignUp = (props) => {
+
+    const history = useHistory();
+
     function signUpSubmit(e) {
         e.preventDefault();
-        props.changeComponent("home")
+        history.push("/home")
     }
  return (
   <>
-      <div className={`signup-form ${props.dtype}`}>
+      <div className="signup-form">
           <form  method="post" onSubmit={signUpSubmit}>
               <h2>Register</h2>
               <p className="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -39,7 +43,7 @@ const SignUp = (props) => {
                   <button type="submit" className="btn btn-success btn-lg btn-block">Register Now</button>
               </div>
           </form>
-          <div className="text-center">Already have an account? <a href="#" onClick={(e)=>{e.preventDefault();props.changeComponent('signIn')}}>Sign in</a></div>
+          <div className="text-center">Already have an account? <Link to="login">Sign in</Link></div>
       </div>
   </>
  );
